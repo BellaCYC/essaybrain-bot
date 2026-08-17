@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EssayBrain Bot</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>EssayBrain is <span id="animated-text"></span><span class="cursor">|</span></h1>
+            <p class="tagline">An AI-powered admissions advisor designed for Discord.</p>
+            <div class="badges">
+                <span class="badge blue">Python 3.10+</span>
+                <span class="badge discord">Discord.py 2.0+</span>
+                <span class="badge orange">Gemini AI Flash</span>
+            </div>
+        </header>
+
+        <hr />
+
+        <section>
+            <h2>Core Features</h2>
+            <ul>
+                <li><strong>Isolated Memory Storage:</strong> Tags logs with unique Discord IDs so user data stays private.</li>
+                <li><strong>Smart Intent Router:</strong> Contextually switches between Socratic coaching, paraphrasing, and recall modes.</li>
+                <li><strong>Long-Response Guard:</strong> Safely handles AI output chunks within Discord character limits.</li>
+            </ul>
+        </section>
+
+        <hr />
+
+        <section>
+            <h2>Commands Cheat Sheet</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Action</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>!log &lt;entry&gt;</code></td>
+                        <td>Save an achievement or skill to memory</td>
+                        <td><code>!log Taught Python to middle schoolers</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>!essay &lt;direction&gt;</code></td>
+                        <td>Get strategic admissions advice & angles</td>
+                        <td><code>!essay Focus on my teaching project</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>!essay paraphrase: &lt;text&gt;</code></td>
+                        <td>Generate quick alternative phrasings</td>
+                        <td><code>!essay paraphrase: my thoughts feel tangled</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>!essay recap</code></td>
+                        <td>Review and rank your saved concepts</td>
+                        <td><code>!essay let's review previous ideas</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <div id="mascot-wrap" class="mascot-wrap" aria-hidden="true">
+        <div id="mascot-bubble" class="mascot-bubble">Hi!</div>
+        <div id="mascot-flip" class="mascot-flip">
+            <div id="mascot" class="mascot idle">
+                <svg viewBox="0 0 160 240" width="70" height="105">
+                    <g id="leg-left" class="leg leg-left">
+                        <rect x="52" y="205" width="18" height="34" rx="9" fill="#ffffff" stroke="#5b6169" stroke-width="3"/>
+                        <line x1="53" y1="216" x2="69" y2="216" stroke="#5b6169" stroke-width="2"/>
+                        <line x1="53" y1="226" x2="69" y2="226" stroke="#5b6169" stroke-width="2"/>
+                    </g>
+                    <g id="leg-right" class="leg leg-right">
+                        <rect x="90" y="205" width="18" height="34" rx="9" fill="#ffffff" stroke="#5b6169" stroke-width="3"/>
+                        <line x1="91" y1="216" x2="107" y2="216" stroke="#5b6169" stroke-width="2"/>
+                        <line x1="91" y1="226" x2="107" y2="226" stroke="#5b6169" stroke-width="2"/>
+                    </g>
+                    <g id="torso" class="torso">
+                        <rect x="42" y="135" width="76" height="78" rx="26" fill="#ffffff" stroke="#5b6169" stroke-width="3"/>
+                        <path d="M44,150 Q80,158 116,150" stroke="#5b6169" stroke-width="2.5" fill="none"/>
+                        <path d="M42,165 Q80,174 118,165" stroke="#5b6169" stroke-width="2.5" fill="none"/>
+                        <path d="M43,180 Q80,190 117,180" stroke="#5b6169" stroke-width="2.5" fill="none"/>
+                        <path d="M44,196 Q80,205 116,196" stroke="#5b6169" stroke-width="2.5" fill="none"/>
+                    </g>
+                    <g id="arm-left" class="arm arm-left">
+                        <path d="M46,148 Q20,158 16,185" stroke="#ffffff" stroke-width="16" fill="none" stroke-linecap="round"/>
+                        <path d="M46,150 Q22,160 17,184" stroke="#5b6169" stroke-width="2" fill="none"/>
+                        <circle cx="16" cy="187" r="8" fill="#ffffff" stroke="#5b6169" stroke-width="2.5"/>
+                    </g>
+                    <g id="arm-right" class="arm arm-right">
+                        <path d="M114,148 Q140,158 144,185" stroke="#ffffff" stroke-width="16" fill="none" stroke-linecap="round"/>
+                        <path d="M116,150 Q138,160 143,184" stroke="#5b6169" stroke-width="2" fill="none"/>
+                        <circle cx="144" cy="187" r="8" fill="#ffffff" stroke="#5b6169" stroke-width="2.5"/>
+                    </g>
+                    <g id="head" class="head">
+                        <circle cx="80" cy="72" r="50" fill="#ffffff" stroke="#5b6169" stroke-width="3"/>
+                        <path d="M32,90 Q80,80 128,90" stroke="#5b6169" stroke-width="2.5" fill="none"/>
+                        <path d="M33,102 Q80,93 127,102" stroke="#5b6169" stroke-width="2.5" fill="none"/>
+                        <path d="M35,113 Q80,105 125,113" stroke="#5b6169" stroke-width="2.5" fill="none"/>
+                        <ellipse cx="80" cy="62" rx="42" ry="34" fill="#5d4bde"/>
+                        <path d="M50,42 Q66,58 80,70 Q94,58 110,42" stroke="#b0309e" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <g id="eye-left" class="eye eye-left">
+                            <ellipse cx="63" cy="72" rx="15" ry="17" fill="#ffffff"/>
+                            <g id="pupil-left" class="pupil">
+                                <circle cx="63" cy="72" r="8" fill="#000000"/>
+                            </g>
+                        </g>
+                        <g id="eye-right" class="eye eye-right">
+                            <ellipse cx="97" cy="72" rx="15" ry="17" fill="#ffffff"/>
+                            <g id="pupil-right" class="pupil">
+                                <circle cx="97" cy="72" r="8" fill="#000000"/>
+                            </g>
+                        </g>
+                        <path d="M74,90 L80,110 L88,92 L82,100 Z" fill="#b0309e"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

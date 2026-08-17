@@ -1,0 +1,295 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+    background: #161b22;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+}
+
+.hero {
+    text-align: center;
+}
+
+.tagline {
+    font-style: italic;
+    color: #8b949e;
+}
+
+.badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.blue { background-color: #02569b; }
+.discord { background-color: #5865f2; }
+.orange { background-color: #e65100; }
+
+hr {
+    border: none;
+    border-top: 1px solid #30363d;
+    margin: 25px 0;
+}
+
+ul {
+    line-height: 1.8;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #30363d;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #21262d;
+}
+
+code {
+    background-color: #21262d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #58a6ff;
+    font-family: monospace;
+}
+
+#animated-text {
+    color: #58a6ff;
+    font-weight: 700;
+}
+
+.cursor {
+    display: inline-block;
+    color: #58a6ff;
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- Mascot --- */
+.mascot-wrap {
+    position: fixed;
+    bottom: 12px;
+    left: 20px;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.mascot-flip {
+    transition: transform 0.3s ease;
+}
+
+.mascot-flip.facing-left {
+    transform: scaleX(-1);
+}
+
+.leg, .arm, .eye, .torso, .head {
+    transform-box: fill-box;
+    transform-origin: 50% 0%;
+}
+
+.eye {
+    transform-origin: 50% 50%;
+}
+
+.pupil {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    transition: transform 0.08s linear;
+}
+
+#mascot {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.mascot-bubble {
+    position: absolute;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.6);
+    background: #ffffff;
+    color: #21262d;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.mascot-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 5px 0 5px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+.mascot-bubble.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* idle */
+@keyframes mascot-idle-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+.mascot.idle { animation: mascot-idle-bob 2.2s ease-in-out infinite; }
+
+/* walking */
+@keyframes mascot-walk-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+.mascot.walking { animation: mascot-walk-bob 0.4s ease-in-out infinite; }
+
+@keyframes leg-left-walk { 0%, 100% { transform: rotate(22deg); } 50% { transform: rotate(-22deg); } }
+@keyframes leg-right-walk { 0%, 100% { transform: rotate(-22deg); } 50% { transform: rotate(22deg); } }
+.mascot.walking .leg-left { animation: leg-left-walk 0.4s linear infinite; }
+.mascot.walking .leg-right { animation: leg-right-walk 0.4s linear infinite; }
+
+@keyframes arm-left-walk { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } }
+@keyframes arm-right-walk { 0%, 100% { transform: rotate(15deg); } 50% { transform: rotate(-15deg); } }
+.mascot.walking .arm-left { animation: arm-left-walk 0.4s linear infinite; }
+.mascot.walking .arm-right { animation: arm-right-walk 0.4s linear infinite; }
+
+/* dancing */
+@keyframes dance-sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+.mascot.dancing .torso, .mascot.dancing .head {
+    animation: dance-sway 0.35s ease-in-out infinite;
+    transform-origin: 50% 100%;
+}
+@keyframes dance-arm-left { 0%, 100% { transform: rotate(-70deg); } 50% { transform: rotate(10deg); } }
+@keyframes dance-arm-right { 0%, 100% { transform: rotate(70deg); } 50% { transform: rotate(-10deg); } }
+.mascot.dancing .arm-left { animation: dance-arm-left 0.35s ease-in-out infinite; }
+.mascot.dancing .arm-right { animation: dance-arm-right 0.35s ease-in-out infinite; }
+@keyframes dance-leg { 0%, 100% { transform: rotate(10deg); } 50% { transform: rotate(-10deg); } }
+.mascot.dancing .leg-left { animation: dance-leg 0.35s ease-in-out infinite; }
+.mascot.dancing .leg-right { animation: dance-leg 0.35s ease-in-out infinite reverse; }
+
+/* jumping */
+@keyframes mascot-jump {
+    0%, 100% { transform: translateY(0) scaleY(1); }
+    20% { transform: translateY(0) scaleY(0.85); }
+    50% { transform: translateY(-38px) scaleY(1.05); }
+    75% { transform: translateY(-38px) scaleY(1.05); }
+    90% { transform: translateY(0) scaleY(0.9); }
+}
+.mascot.jumping { animation: mascot-jump 0.8s ease-in-out; }
+
+/* click bounce */
+@keyframes mascot-click-bounce {
+    0% { transform: scale(1); }
+    30% { transform: scale(0.85, 1.15); }
+    55% { transform: scale(1.1, 0.9); }
+    100% { transform: scale(1); }
+}
+.mascot.clicked { animation: mascot-click-bounce 0.4s ease-in-out; }
+
+/* blink */
+@keyframes eye-blink { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.1); } }
+.eye.blinking { animation: eye-blink 0.22s ease-in-out; }
+
+/* wave */
+@keyframes arm-wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-35deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(-35deg); }
+}
+.arm-right.waving { animation: arm-wave 0.7s ease-in-out 2; }
+/* idle */
+@keyframes mascot-idle-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+.mascot.idle { animation: mascot-idle-bob 2.2s ease-in-out infinite; }
+
+/* walking */
+@keyframes mascot-walk-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+.mascot.walking { animation: mascot-walk-bob 0.4s ease-in-out infinite; }
+
+@keyframes leg-left-walk { 0%, 100% { transform: rotate(22deg); } 50% { transform: rotate(-22deg); } }
+@keyframes leg-right-walk { 0%, 100% { transform: rotate(-22deg); } 50% { transform: rotate(22deg); } }
+.mascot.walking .leg-left { animation: leg-left-walk 0.4s linear infinite; }
+.mascot.walking .leg-right { animation: leg-right-walk 0.4s linear infinite; }
+
+@keyframes arm-left-walk { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } }
+@keyframes arm-right-walk { 0%, 100% { transform: rotate(15deg); } 50% { transform: rotate(-15deg); } }
+.mascot.walking .arm-left { animation: arm-left-walk 0.4s linear infinite; }
+.mascot.walking .arm-right { animation: arm-right-walk 0.4s linear infinite; }
+
+/* dancing */
+@keyframes dance-sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+.mascot.dancing .torso, .mascot.dancing .head {
+    animation: dance-sway 0.35s ease-in-out infinite;
+    transform-origin: 50% 100%;
+}
+@keyframes dance-arm-left { 0%, 100% { transform: rotate(-70deg); } 50% { transform: rotate(10deg); } }
+@keyframes dance-arm-right { 0%, 100% { transform: rotate(70deg); } 50% { transform: rotate(-10deg); } }
+.mascot.dancing .arm-left { animation: dance-arm-left 0.35s ease-in-out infinite; }
+.mascot.dancing .arm-right { animation: dance-arm-right 0.35s ease-in-out infinite; }
+@keyframes dance-leg { 0%, 100% { transform: rotate(10deg); } 50% { transform: rotate(-10deg); } }
+.mascot.dancing .leg-left { animation: dance-leg 0.35s ease-in-out infinite; }
+.mascot.dancing .leg-right { animation: dance-leg 0.35s ease-in-out infinite reverse; }
+
+/* jumping */
+@keyframes mascot-jump {
+    0%, 100% { transform: translateY(0) scaleY(1); }
+    20% { transform: translateY(0) scaleY(0.85); }
+    50% { transform: translateY(-38px) scaleY(1.05); }
+    75% { transform: translateY(-38px) scaleY(1.05); }
+    90% { transform: translateY(0) scaleY(0.9); }
+}
+.mascot.jumping { animation: mascot-jump 0.8s ease-in-out; }
+
+/* blink */
+@keyframes eye-blink { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.1); } }
+.eye.blinking { animation: eye-blink 0.22s ease-in-out; }
+
+/* wave */
+@keyframes arm-wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-35deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(-35deg); }
+}
+.arm-right.waving { animation: arm-wave 0.7s ease-in-out 2; }
